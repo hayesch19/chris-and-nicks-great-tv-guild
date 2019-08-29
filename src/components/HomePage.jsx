@@ -1,10 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import 'materialize-css/dist/css/materialize.min.css'
 import M from 'materialize-css'
+import axios from 'axios'
 
 const HomePage = () => {
   useEffect(() => {
     M.AutoInit()
+  }, [])
+
+  // API URL
+  // https://api.themoviedb.org/3/tv/top_rated?api_key=03423e5f93610593731b95e4756610af&language=en-US&page=1
+
+  const fetchData = async () => {
+    const resp = await axios.get(
+      'https://api.themoviedb.org/3/tv/top_rated?api_key=03423e5f93610593731b95e4756610af&language=en-US&page=1'
+    )
+    console.log(resp.data, 'Shows')
+  }
+
+  useEffect(() => {
+    fetchData()
   }, [])
 
   return (
