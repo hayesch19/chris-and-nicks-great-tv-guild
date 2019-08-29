@@ -18,6 +18,18 @@ const ShowPage = () => {
               alt=""
             />
             <h2 className="center">Show Title</h2>
+            <section className="row">
+              <ul className="col l6">
+                <li>Chris Hayes</li>
+                <li>Nick Weber</li>
+              </ul>
+              <p className="col l6">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
+                molestiae excepturi eos quibusdam illo! Totam blanditiis fugit,
+                molestias quos quibusdam quia? Dicta perferendis officia
+                expedita omnis inventore repudiandae nemo cupiditate.
+              </p>
+            </section>
           </div>
         </div>
       </main>
