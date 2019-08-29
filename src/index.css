@@ -10,3 +10,8 @@ body {
   margin: 0;
   min-height: 100%;
 }
+
+.show-image {
+  max-height: 500px;
+  margin: 2rem 0rem;
+}
