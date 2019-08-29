@@ -11,6 +11,8 @@ body {
   min-height: 100%;
 }
 
+/***** Classes ******/
+
 .show-image {
   width: 100%;
   margin: 2rem 0rem;
