@@ -4,11 +4,14 @@ import M from 'materialize-css'
 import axios from 'axios'
 
 const ShowPage = () => {
+  const [tvShowCast, setTvShowCast] = useState([])
+
   const fetchTvData = async () => {
     const resp = await axios.get(
       'https://api.themoviedb.org/3/tv/60625/credits?api_key=03423e5f93610593731b95e4756610af&language=en-US'
     )
-    console.log(resp.data, 'Rick and Morty')
+    setTvShowCast(resp.data.cast)
+    // When the above line returns just the data and not the .cast (and we add .cast below) it doesn't work!!!
   }
 
   useEffect(() => {
@@ -28,11 +31,14 @@ const ShowPage = () => {
             />
           </div>
           <div className="col l7">
-            <h2 className="left-align">Show Title</h2>
+            <h2 className="left-align"></h2>
             <h5>Cast</h5>
+            {console.log(typeof tvShowCast)}
+            {console.log(tvShowCast)}
             <ul>
-              <li>Chris Hayes</li>
-              <li>Nick Weber</li>
+              {tvShowCast.map(cast => {
+                return <li>{cast.name}</li>
+              })}
             </ul>
             <h5>Show Description</h5>
             <p>
