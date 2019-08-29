@@ -18,8 +18,16 @@ const HomePage = () => {
     console.log(resp.data, 'Shows')
   }
 
+  const fetchTvData = async () => {
+    const resp = await axios.get(
+      'https://api.themoviedb.org/3/tv/60625/credits?api_key=03423e5f93610593731b95e4756610af&language=en-US'
+    )
+    console.log(resp.data, 'Rick and Morty')
+  }
+
   useEffect(() => {
     fetchData()
+    fetchTvData()
   }, [])
 
   return (
