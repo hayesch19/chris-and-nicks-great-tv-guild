@@ -4,8 +4,6 @@ import Header from './components/Header.jsx'
 import HomePage from './components/HomePage.jsx'
 import ShowPage from './components/ShowPage.jsx'
 
-// Test
-
 class App extends Component {
   render() {
     return (
