@@ -51,7 +51,7 @@ const HomePage = () => {
               return (
                 <div key={i} className="col l6 show-card-area">
                   <div className="show-poster-area">
-                    <Link to={`/tv/${tvShow.id}`}>
+                    <Link to={`/tv/${tvShow.id}`} state={tvShow}>
                       <img
                         className="col s3"
                         src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${tvShow.poster_path}`}
