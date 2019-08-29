@@ -7,7 +7,11 @@ const HomePage = () => {
     M.AutoInit()
   }, [])
 
-  return <div>This Is A Home Page</div>
+  return (
+    <>
+      <div>This Is A Home Page</div>
+    </>
+  )
 }
 
 export default HomePage
