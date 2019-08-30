@@ -18,6 +18,7 @@ const ShowPage = props => {
   useEffect(() => {
     M.AutoInit()
     fetchTvData()
+    console.log(props)
     // TALK TO MARK - when I try to set this to state, it returns empty...why?
     // console.log(props.match.params.showID)
     // setShowID(props.match.params.showID)
