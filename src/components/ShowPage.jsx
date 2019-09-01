@@ -4,28 +4,21 @@ import M from 'materialize-css'
 import axios from 'axios'
 
 const ShowPage = props => {
-  const [tvShowCast, setTvShowCast] = useState([])
-  // const [showID, setShowID] = useState('')
+  const [tvShowCast, setTvShowCast] = useState({ cast: [] })
+  const [showID, setShowID] = useState(props.match.params.showID)
 
   const fetchTvData = async () => {
     const resp = await axios.get(
-      `https://api.themoviedb.org/3/tv/${props.match.params.showID}/credits?api_key=03423e5f93610593731b95e4756610af&language=en-US`
+      `https://api.themoviedb.org/3/tv/${showID}/credits?api_key=03423e5f93610593731b95e4756610af&language=en-US`
     )
-    setTvShowCast(resp.data.cast)
-    // TALK TO MARK - When the above line returns just the data and not the .cast (and we add .cast below) it doesn't work!!!
+    console.log({ data: resp.data })
+    setTvShowCast(resp.data)
   }
 
   useEffect(() => {
     M.AutoInit()
     fetchTvData()
-    console.log(props)
-    // TALK TO MARK - when I try to set this to state, it returns empty...why?
-    // console.log(props.match.params.showID)
-    // setShowID(props.match.params.showID)
-    // console.log(showID)
-    // console.log(
-    //   `https://api.themoviedb.org/3/tv/${showID}/credits?api_key=03423e5f93610593731b95e4756610af&language=en-US`
-    // )
+    // console.log({ props })
   }, [])
 
   return (
@@ -42,10 +35,10 @@ const ShowPage = props => {
           <div className="col l7">
             <h2 className="left-align">Show Title</h2>
             <h5>Cast</h5>
-            {/* {console.log(typeof tvShowCast)}
-            {console.log(tvShowCast)} */}
+            {console.log(typeof tvShowCast)}
+            {console.log(tvShowCast)}
             <ul>
-              {tvShowCast.map((cast, i) => {
+              {tvShowCast.cast.map((cast, i) => {
                 return <li key={i}>{cast.name}</li>
               })}
             </ul>
