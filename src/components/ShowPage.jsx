@@ -6,6 +6,7 @@ import axios from 'axios'
 const ShowPage = props => {
   const [tvShowCast, setTvShowCast] = useState({ cast: [] })
   const [showID, setShowID] = useState(props.match.params.showID)
+  const [showData, setShowData] = useState(props.location.tvShow)
 
   const fetchTvData = async () => {
     const resp = await axios.get(
@@ -15,7 +16,7 @@ const ShowPage = props => {
     setTvShowCast(resp.data)
   }
 
-  console.log(props)
+  console.log(props.location.tvShow)
 
   useEffect(() => {
     M.AutoInit()
@@ -30,12 +31,12 @@ const ShowPage = props => {
           <div className="col l5">
             <img
               className="show-image"
-              src="https://cdn11.bigcommerce.com/s-nq6l4syi/images/stencil/1280x1280/products/5358/5846/3015-1024__28352.1452060019.jpg"
+              src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${showData.poster_path}`}
               alt=""
             />
           </div>
           <div className="col l7">
-            <h2 className="left-align">Show Title</h2>
+            <h2 className="left-align">{showData.name}</h2>
             <h5>Cast</h5>
             {/* {console.log(typeof tvShowCast)}
             {console.log(tvShowCast)} */}
@@ -44,13 +45,8 @@ const ShowPage = props => {
                 return <li key={i}>{cast.name}</li>
               })}
             </ul>
-            <h5>Show Description</h5>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
-              molestiae excepturi eos quibusdam illo! Totam blanditiis fugit,
-              molestias quos quibusdam quia? Dicta perferendis officia expedita
-              omnis inventore repudiandae nemo cupiditate.
-            </p>
+            <h5>Description</h5>
+            <p>{showData.overview}</p>
           </div>
         </div>
       </main>

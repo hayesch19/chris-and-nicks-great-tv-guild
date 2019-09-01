@@ -53,8 +53,8 @@ const HomePage = () => {
                   <div className="show-poster-area">
                     <Link
                       to={{
-                        pathName: `/tv/${tvShow.id}`,
-                        state: { tvShow }
+                        pathname: `/tv/${tvShow.id}`,
+                        tvShow
                       }}
                     >
                       <img
