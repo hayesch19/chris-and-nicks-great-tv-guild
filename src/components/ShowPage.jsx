@@ -15,6 +15,8 @@ const ShowPage = props => {
     setTvShowCast(resp.data)
   }
 
+  console.log(props)
+
   useEffect(() => {
     M.AutoInit()
     fetchTvData()
@@ -35,8 +37,8 @@ const ShowPage = props => {
           <div className="col l7">
             <h2 className="left-align">Show Title</h2>
             <h5>Cast</h5>
-            {console.log(typeof tvShowCast)}
-            {console.log(tvShowCast)}
+            {/* {console.log(typeof tvShowCast)}
+            {console.log(tvShowCast)} */}
             <ul>
               {tvShowCast.cast.map((cast, i) => {
                 return <li key={i}>{cast.name}</li>

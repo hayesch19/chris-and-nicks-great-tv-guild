@@ -15,7 +15,7 @@ const HomePage = () => {
       'https://api.themoviedb.org/3/tv/top_rated?api_key=03423e5f93610593731b95e4756610af&language=en-US&page=1'
     )
     setTvShows(resp.data.results)
-    console.log(resp.data, 'Shows')
+    // console.log(resp.data, 'Shows')
   }
 
   useEffect(() => {
@@ -51,7 +51,12 @@ const HomePage = () => {
               return (
                 <div key={i} className="col l6 show-card-area">
                   <div className="show-poster-area">
-                    <Link to={`/tv/${tvShow.id}`}>
+                    <Link
+                      to={{
+                        pathName: `/tv/${tvShow.id}`,
+                        state: { tvShow }
+                      }}
+                    >
                       <img
                         className="col s3"
                         src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${tvShow.poster_path}`}
