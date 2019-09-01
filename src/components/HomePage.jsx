@@ -5,21 +5,24 @@ import M from 'materialize-css'
 import axios from 'axios'
 
 const HomePage = () => {
-  useEffect(() => {
-    M.AutoInit()
-  }, [])
-
   const [tvShows, setTvShows] = useState([])
+  const [randomShow, setRandomShow] = useState([0])
+
   const fetchData = async () => {
     const resp = await axios.get(
       'https://api.themoviedb.org/3/tv/top_rated?api_key=03423e5f93610593731b95e4756610af&language=en-US&page=1'
     )
     setTvShows(resp.data.results)
-    // console.log(resp.data, 'Shows')
+    setRandomShow(
+      resp.data.results[Math.floor(Math.random) * resp.data.results.length - 1]
+    )
+    console.log(resp.data, 'Shows')
+    console.log(randomShow, 'Random')
   }
 
   useEffect(() => {
     fetchData()
+    M.AutoInit()
   }, [])
 
   return (
@@ -35,12 +38,7 @@ const HomePage = () => {
               />
               <section className="col s6">
                 <h3>Title</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Recusandae provident veniam, deserunt velit exercitationem,
-                  amet reprehenderit officiis nesciunt error a commodi! Dicta
-                  quo repellendus blanditiis facere incidunt nesciunt, sint nam.
-                </p>
+                <p> Overview</p>
               </section>
             </div>
           </div>
