@@ -5,19 +5,15 @@ import M from 'materialize-css'
 import axios from 'axios'
 
 const HomePage = () => {
-  const [tvShows, setTvShows] = useState([])
-  const [randomShows, setRandomShows] = useState([0])
+  const [tvShows, setTvShows] = useState([[]])
+  const [rand, setRand] = useState(0)
 
   const fetchData = async () => {
     const resp = await axios.get(
       'https://api.themoviedb.org/3/tv/top_rated?api_key=03423e5f93610593731b95e4756610af&language=en-US&page=1'
     )
     setTvShows(resp.data.results)
-    setRandomShows(
-      resp.data.results[Math.floor(Math.random) * resp.data.results.length - 1]
-    )
-    console.log(resp.data, 'Shows')
-    console.log(resp.data, 'Random')
+    setRand(Math.floor(Math.random() * resp.data.results.length))
   }
 
   useEffect(() => {
@@ -30,23 +26,19 @@ const HomePage = () => {
       <main className="container">
         <section className="hero-show">
           <div className="row">
-            {randomShows.map((randomShow, i) => {
-              return (
-                <div key={i} className="col s12 offset-s2">
-                  <img
-                    className="col s3 hero-image"
-                    src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${randomShow.poster_path}`}
-                    alt=""
-                  />
-                  <section className="col s6">
-                    <h3>{randomShow.name}</h3>
-                    <p>Rating: {randomShow.vote_average}</p>
-                    <p>First Aired: {randomShow.first_air_date}</p>
-                    <p> {randomShow.overview}</p>
-                  </section>
-                </div>
-              )
-            })}
+            <div className="col s12 offset-s2">
+              <img
+                className="col s3 hero-image"
+                src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${tvShows[rand].poster_path}`}
+                alt=""
+              />
+              <section className="col s6">
+                <h3>{tvShows[rand].name}</h3>
+                <p>Rating: {tvShows[rand].vote_average}</p>
+                <p>First Aired: {tvShows[rand].first_air_date}</p>
+                <p> {tvShows[rand].overview}</p>
+              </section>
+            </div>
           </div>
         </section>
         <section className="show-list">
