@@ -30,7 +30,7 @@ const ShowPage = props => {
         <div className="row">
           <div className="col l5">
             <img
-              className="show-image"
+              className="responsive-img"
               src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${showData.poster_path}`}
               alt=""
             />

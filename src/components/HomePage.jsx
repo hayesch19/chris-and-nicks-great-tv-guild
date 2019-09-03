@@ -26,9 +26,9 @@ const HomePage = () => {
       <main className="container">
         <section className="hero-show">
           <div className="row">
-            <div className="col s12 offset-s2">
+            <div className="col s12 offset-s1">
               <img
-                className="col s3 hero-image"
+                className="col s3 responsive-img"
                 src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${tvShows[rand].poster_path}`}
                 alt=""
               />
@@ -54,7 +54,7 @@ const HomePage = () => {
                       }}
                     >
                       <img
-                        className="col s3"
+                        className="col s4 responsive-img"
                         src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${tvShow.poster_path}`}
                         alt=""
                       />
@@ -64,7 +64,7 @@ const HomePage = () => {
                     <h5>{tvShow.name}</h5>
                     <p>Rating: {tvShow.vote_average}</p>
                     <p>First Aired: {tvShow.first_air_date}</p>
-                    <p>{tvShow.overview}</p>
+                    {/* <p>{tvShow.overview}</p> */}
                   </section>
                 </div>
               )

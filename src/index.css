@@ -4,6 +4,7 @@
 
 html {
   height: 100%;
+  background-color: #fcf9ea;
 }
 
 body {
@@ -13,7 +14,16 @@ body {
 
 /***** Classes ******/
 
-/* .show-image {
-  width: 100%;
-  margin: 2rem 0rem;
-} */
+.container {
+  margin: 0;
+  padding: 1rem;
+  color: #49beb7;
+}
+
+.nav-wrapper {
+  background-color: #49beb7;
+}
+
+.show-list {
+  padding: 3rem;
+}
